@@ -6,10 +6,17 @@
   <%= form.submit "Submit Twitter Handle" %>
 <% end  %>
 
-<ul>
-  <% @tweets.each do |tweet| %>
-    <li>
-      <%= tweet %>
-    </li>
-  <% end %>
-</ul>
+<br/>
+<hr/>
+
+<% if @tweets.any? %>
+  <ul>
+    <% @tweets.each do |tweet| %>
+      <li>
+        <%= tweet %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>Tweets will show up here once you submit</p>
+<% end %>
