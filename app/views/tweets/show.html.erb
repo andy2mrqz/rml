@@ -1,0 +1,15 @@
+<h1>Tweet Sentiment Analyzer</h1>
+<p>Provide a Twitter ("𝕏") handle to analyze their tweet sentiment</p>
+
+<form>
+  <label for="twitter_handle">Twitter Handle</label>
+  <input type="text" name="twitter_handle">
+</form>
+
+<ul>
+  <% @tweets.each do |tweet| %>
+    <li>
+      <%= tweet %>
+    </li>
+  <% end %>
+</ul>
