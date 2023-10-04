@@ -1,7 +1,15 @@
 <h1>Tweet Sentiment Analyzer</h1>
 <p>Provide a Twitter ("𝕏") handle to analyze their tweet sentiment</p>
 
-<%= form_for :user, url: "tweets/show", method: "get" do |form| %>
+<%= form_for :user, url: "tweets", method: "get" do |form| %>
   <%= form.text_field :twitter_handle %>
   <%= form.submit "Submit Twitter Handle" %>
 <% end  %>
+
+<ul>
+  <% @tweets.each do |tweet| %>
+    <li>
+      <%= tweet %>
+    </li>
+  <% end %>
+</ul>

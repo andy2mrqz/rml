@@ -1,10 +1,13 @@
 class TweetsController < ApplicationController
   def index
-  end
-
-  def show
-    twitter_handle =  params[:user][:twitter_handle]
-    # TODO: Fetch tweets given handle
-    @tweets = ["hi", "hello", "hola"]
+    twitter_handle = params&.dig(:user, :twitter_handle)
+    if twitter_handle.nil?
+      puts ">>> no handle provided"
+      @tweets = []
+    else
+      puts ">>> " + twitter_handle
+      # TODO: Fetch tweets given handle
+      @tweets = ["hi", "hello", "hola"]
+    end
   end
 end
