@@ -1,6 +1,6 @@
 require "test_helper"
 
-class TweetsControllerTest < ActionDispatch::IntegrationTest
+class SentimentControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end

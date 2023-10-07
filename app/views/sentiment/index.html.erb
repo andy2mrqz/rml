@@ -1,0 +1,45 @@
+<h1>Sentiment Analyzer</h1>
+<p>Paste in some text to analyze its sentiment</p>
+
+<%= form_for :sentiment_form, url: "sentiment", method: "get" do |form| %>
+  <%= form.text_area :text, rows: 5, cols: 100 %>
+  <br/>
+  <%= form.submit "Submit Tweet Text" %>
+<% end  %>
+
+<br/>
+<hr/>
+
+<% if @submitted_text %>
+  <table border="1">
+    <tr>
+      <th>Submitted Text</th>
+      <th>Sentiment</th>
+    </tr>
+    <tr>
+      <td><%= @submitted_text %></td>
+      <td><%= @sentiment || "no sentiment analysis yet" %></td>
+    </tr>
+  </table>
+<% else %>
+  <p>Sentiment analysis will show up here once you submit</p>
+<% end %>
+
+<style>
+  table {
+    border-collapse: collapse;
+    width: 80%; /* Adjust the table width as needed */
+  }
+
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+
+  /* Apply word wrap to the first column */
+  td:first-child {
+    white-space: normal; /* Allow text to wrap */
+    max-width: 100px; /* Adjust the maximum width as needed */
+  }
+</style>
