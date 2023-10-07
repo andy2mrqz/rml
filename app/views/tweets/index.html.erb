@@ -1,22 +1,19 @@
 <h1>Tweet Sentiment Analyzer</h1>
-<p>Provide a Twitter ("𝕏") handle to analyze their tweet sentiment</p>
+<p>Paste in a tweet to analyze its sentiment</p>
 
-<%= form_for :user, url: "tweets", method: "get" do |form| %>
-  <%= form.text_field :twitter_handle %>
-  <%= form.submit "Submit Twitter Handle" %>
+<%= form_for :tweet_form, url: "tweets", method: "get" do |form| %>
+  <%= form.text_area :tweet, rows: 5, cols: 100 %>
+  <%= form.submit "Submit Tweet Text" %>
 <% end  %>
 
 <br/>
 <hr/>
 
-<% if @tweets.any? %>
-  <ul>
-    <% @tweets.each do |tweet| %>
-      <li>
-        <%= tweet %>
-      </li>
-    <% end %>
-  </ul>
+<% if @tweet %>
+  <h1><%= @tweet %></h1>
+  <% if @sentiment %>
+    <h2><%= @sentiment %></h2>
+  <% end %>
 <% else %>
-  <p>Tweets will show up here once you submit</p>
+  <p>Tweet analysis will show up here once you submit</p>
 <% end %>
