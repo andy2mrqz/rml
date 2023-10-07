@@ -1,25 +1,27 @@
 <h1>Sentiment Analyzer</h1>
-<p>Paste in some text to analyze its sentiment</p>
+<p>Paste in some text to analyze its sentiment.  Place two new lines to submit multiple batches at a time</p>
 
 <%= form_for :sentiment_form, url: "sentiment", method: "get" do |form| %>
   <%= form.text_area :text, rows: 5, cols: 100 %>
   <br/>
-  <%= form.submit "Submit Tweet Text" %>
+  <%= form.submit "Submit Text" %>
 <% end  %>
 
 <br/>
 <hr/>
 
-<% if @submitted_text %>
+<% if @text_array %>
   <table border="1">
     <tr>
       <th>Submitted Text</th>
       <th>Sentiment</th>
     </tr>
-    <tr>
-      <td><%= @submitted_text %></td>
-      <td><%= @sentiment || "no sentiment analysis yet" %></td>
-    </tr>
+    <% @text_array.each_with_index do |submitted_text, index| %>
+      <tr>
+        <td><%= submitted_text %></td>
+        <td><%= @sentiment_array&.fetch(index) || "no sentiment analysis yet" %></td>
+      </tr>
+    <% end %>
   </table>
 <% else %>
   <p>Sentiment analysis will show up here once you submit</p>
